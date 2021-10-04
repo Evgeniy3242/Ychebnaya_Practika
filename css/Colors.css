@@ -1,0 +1,18 @@
+:root{
+    --header_color: rgb(75, 84, 156);
+    --header_logo_color: rgb(240, 255, 255);
+    --header_color_transition: rgba(75, 84, 156, 0.9);
+    --header_color_transition_hover: rgba(75, 84, 156, 1);
+    --nav_links_color: rgb(227, 227, 227);
+    --nav_links_active_color: rgba(144, 153, 255, 0.9);
+
+    --nav_dropdown_menu: rgb(127, 127, 206);
+    --nav_dropdown_menu_color: rgb(208, 208, 208);
+    --nav_dropdown_menu_border: rgb(149, 149, 255);
+
+    --main_block_color: rgb(255, 255, 255);
+    --general_text_color: black;
+    --main_title_color: rgb(20, 99, 149);
+    --products_block_color: #f0f8ff;
+
+}

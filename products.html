@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Травы</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/Colors.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+    <div class="preloader">
+        <div class="preloader__row">
+            <div class="preloader__item"></div>
+            <div class="preloader__item"></div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="navigation d-flex justify-content-between">
+                    <div class="nav-logo">
+                        <h4 class="logo">Здравница</h4>
+                    </div>
+                    <nav class="nav">
+                        <a class="btn btn-secondary" href="index.html" role="button">
+                                Назад
+                        </a>
+                        <button class="btn btn-secondary" onclick="buy()" type="button" class="btn btn-primary">
+                          Оформить заказ
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Оформление заказа</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="modal-body" class="modal-body">
+
+            </div>
+            <div>
+            <form action="index.html" class="order-form needs-validation" validate>
+                <div class="form-group">
+                    <label for="validationCustom01">Введите ФИО</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="ФИО"required>
+                </div>
+                <div class="form-group">
+                    <label for="validationCustom02">Введите Email</label>
+                    <input type="email" class="form-control" id="validationCustom02" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="validationCustom03">Дополнительная информация</label>
+                    <textarea type="text" class="form-control" id="validationCustom03" placeholder="Введите пожелания" required></textarea>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                        <label class="form-check-label" for="exampleCheck1">Пользовательское</br> соглашение </label>
+                    </div>
+                    <input type="submit" onsubmit="result()" class="btn btn-primary"/>
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
+                <button type="button" class="btn btn-secondary" onclick="resetCart()" data-bs-dismiss="modal">Сбросить корзину</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="products">
+        <div class="container shadow ">
+            <h1>Травы в таблетках:</h1>
+            <div class="items">
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/1.jpg" alt="Картинка 1">
+                    <div class="card-body" id="1">
+                        <h4 class="card-title">Бактериям-стоп</h4>
+                        <p class="card-text">
+                          Рекомендованы при всех хронических заболеваниях бактериальной и микробной этиологии,
+                          в том числе органов дыхания - хроническом обструктивном бронхите, хронической пневмонии,
+                          бронхоэктатической болезни, туберкулезе, саркоидозе легких и др. Можно применять при раке
+                          легкого и метастазах в легких. Как антибактериальное, антимикробное и улучшающее газообмен
+                          средство.
+                        </p>
+
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4>159.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/2.jpg" alt="Картинка 1">
+                    <div class="card-body" id="2">
+                        <h4 class="card-title">Витамины для мозга</h4>
+                        <p class="card-text">
+                            Положительно влияет на деятельность нервной системы: способствует выравниванию процессов возбуждения и торможения в коре головного мозга,
+			                повышению умственной работоспособности, снижению повышенной раздражительности, нормализации сна.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4>573.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/3.png" alt="Картинка 1">
+                    <div class="card-body" id="3">
+                        <h4 class="card-title">Гельминтам</h4>
+                        <p class="card-text">
+                            Травяной сбор в таблетках от глистов эффективны при глистных инвазиях, заражениях простейшими хламидиями, лямблиями и т.п.
+                            Надежно изгоняют паразитов из организма, способствуют восстановлению пораженных слизистых оболочек желудочно-кишечного тракта.
+                            Курс приема: 1,5-2 месяца (180 таблеток артикул 11915438). Обязательным условием оздоровления является наличие ежедневного мягкого стула от 1-2 раза в день.
+                            Способ применения : растворить из расчета 1 таблетка на 40 кг веса в 100 мл теплой некипяченой воды, либо проглотить не разжевывая. Принимать на ночь.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4>287.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+            </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/4.jpg" alt="Картинка 1">
+                    <div class="card-body" id="4">
+                        <h4 class="card-title">Паразитам-стоп</h4>
+                        <p class="card-text">
+                            Эффективны при глистных инвазиях, заражениях простейшими хламидиями, лямблиями и т.п.
+                            Надежно изгоняют паразитов из организма, способствуют восстановлению пораженных слизистых оболочек желудочно-кишечного тракта.
+                            Минимальный курс приема: 1,5-2 месяца. Обязательным условием оздоровления является наличие ежедневного мягкого стула от 1-2 раза в день.
+                            При необходимости дополнить приемом напитка чайного «Кишечник без запоров-1» на ночь.                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 >287.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/5.jpg" alt="Картинка 1">
+                    <div class="card-body" id="5">
+                        <h4 class="card-title">Глюкоза норма</h4>
+                        <p class="card-text">
+                            Обладают сахароснижающим действием: за счет стимуляции поджелудочной железы увеличивают выработку инсулина.
+                            Благотворно влияют на нервную систему, повышают жизненный тонус. Предохраняют от поражений сердечно-сосудистой системы,
+                            сетчатки глаз, почек и печени и других органов.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4>159.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/6.jpg" alt="Картинка 1">
+                    <div class="card-body" id="6">
+                        <h4 class="card-title">Грибок-минус</h4>
+                        <p class="card-text">
+                            Мягко корректируют иммунодефицитные состояния и являются эффективным средством при различных грибковых поражениях кожи (грибок ногтей, грибок на ногах) и слизистых оболочек.
+			                Применение; по 2-4 таблетки 3 раза в день растворить в 100 мл теплой некипяченой воды, либо проглотить не разжевывая, запив водой, за 10 минут до еды.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4>159.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/7.jpg" alt="Картинка 1">
+                    <div class="card-body" id="7">
+                        <h4 class="card-title">Грудь здоровая</h4>
+                        <p class="card-text">
+                            Способствуют нормализации гормонального баланса. Таблетки для груди устраняют условия, при которых развиваются мастопатии, маститы,
+			                болезненность, набухание или нагрубание молочных желез.Минимальный курс приема: 2-3 месяца.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">370.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/8.jpg" alt="Картинка 1">
+                    <div class="card-body" id="8">
+                        <h4 class="card-title">Для стройности</h4>
+                        <p class="card-text">
+                            Таблетки для стройности ( похудения ) способствуют уменьшению аппетита, нормализации углеводно-жирового обмена,
+			                гормонального фона, как у мужчин, так и у женщин.Оказывают мягкое мочегонное и слабительное действие.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">159.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/9.jpg" alt="Картинка 1">
+                    <div class="card-body" id="9">
+                        <h4 class="card-title">Желудок здоровый</h4>
+                        <p class="card-text">
+                            Эффективное болеутоляющее, спазмолитическое, ранозаживляющее и противоопухолевое средство.
+                            Рекомендованы при острых и хронических гастритах, сопровождающихся типичными жалобами на тяжесть в эпигастральной области, голодные боли,
+                            усиленное газообразование, потерю веса; способствуют защите слизистых желудка и кишечника, нормализации кислотности, улучшению процесса пищеварения.
+                            Можно применять при онкологических заболеваниях органов пищеварения.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">4500</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1>Эфирные масла:</h1>
+            <div class="items">
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/10.jpg" alt="Картинка 1">
+                    <div class="card-body" id="10">
+                        <h4 class="card-title">Авокадо Botanika</h4>
+                        <p class="card-text">
+                            Масло авокадо - это по-настоящему универсальное косметическое средство, которое идеально подходит для ежедневного ухода за кожей лица и тела,
+			                включая особо чувствительную зону шеи и контура глаз, а также волосами и ногтями.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">162.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/11.jpg" alt="Картинка 1">
+                    <div class="card-body" id="11">
+                        <h4 class="card-title">Аргана</h4>
+                        <p class="card-text">
+                            Аргановое масло – это удивительный комплекс химических веществ: различные кислоты, витамин Е (его здесь больше, чем в оливковом масле)
+			                и стеролы – особые вещества, жизненно необходимые для человеческой кожи.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">140.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/12.jpg" alt="Картинка 1">
+                    <div class="card-body" id="12">
+                        <h4 class="card-title">Бергамот Botanika</h4>
+                        <p class="card-text">
+                            Это нежное эфирное масло получают из кожуры плодов бергамота, напоминающего миниатюрное дерево апельсина. Его свежий сладкий фруктовый аромат с пряно-бальзамическим послевкусием можно отнести к самым праздничным и солнечным запахам.
+			                В косметологии используют антисептические и заживляющие свойства бергамота. Является легким афродизиаком.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">336.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/13.jpg" alt="Картинка 1">
+                    <div class="card-body" id="13">
+                        <h4 class="card-title">Вербена лимонная Botanika</h4>
+                        <p class="card-text">
+                            Эфирное масло Botanika "Вербена лимонная" тонизирует и стабилизирует нервную систему, применяется при беспокойстве, бессоннице, нервном напряжении,снимает усталость,
+			                помогает справиться с апатией, безразличием и потерей интереса. Регулярный массаж с маслом вербены помогает снимать стресс.Стимулирует деятельность мозга, повышает концентрацию.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">200.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/14.jpg" alt="Картинка 1">
+                    <div class="card-body" id="14">
+                        <h4 class="card-title">Гвоздика из листьев Botanika</h4>
+                        <p class="card-text">
+                            Эфирное масло гвоздики из листьев, с сильным землистым бальзамическим ароматом дыма и оттенком ванили, используется для профилактики и лечения угревой сыпи, и других гнойничковых поражений кожи.
+			                Помогает восстановить силы после физического и нервного переутомления, улучшает память. Отпугивает насекомых (моль, комары) и способствует снятию зуда после укусов насекомых.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">90.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/15.jpg" alt="Картинка 1">
+                    <div class="card-body" id="15">
+                        <h4 class="card-title">Герань Botanika</h4>
+                        <p class="card-text">
+                            Эфирные масла — изумительные мелодии, льющиеся из самых глубин растений. Мелодии, способные пробудить желания и напитать энергией солнца.
+                            Способные успокоить и окутать лунным безмолвием.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">112.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/16.jpg" alt="Картинка 1">
+                    <div class="card-body" id="16">
+                        <h4 class="card-title">Ель обыкновенная Botanika</h4>
+                        <p class="card-text">
+                            Этот хорошо знакомый запах благотворно влияет на эмоции и нервную систему, восстанавливает силы, повышает умственную и физическую работоспособность, заряжает бодростью.
+			                Эфирное масло ели - прекрасный фон для йоги и медитаци.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">229.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1>Глина пищевая:</h1>
+            <div class="items">
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/17.jpg" alt="Картинка 1">
+                    <div class="card-body" id="17">
+                        <h4 class="card-title">Глина белая</h4>
+                        <p class="card-text">
+                            Обладая исключительной поглощающей способностью, белая глина абсорбирует загрязнения с поверхности кожи, уменьшает жирный блеск и придает приятное ощущение свежести.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">50.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/18.jpg" alt="Картинка 1">
+                    <div class="card-body" id="18">
+                        <h4 class="card-title">Глина башкирская Мелеуз голубая</h4>
+                        <p class="card-text">
+                            Глина при откусывание тает во рту как пломбир. Не залипает. В конце немного сладчит.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">80.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/19.jpg" alt="Картинка 1">
+                    <div class="card-body" id="19">
+                        <h4 class="card-title">Глина белая Каолин донецкий</h4>
+                        <p class="card-text">
+                            Глина при откусывание тает во рту как пломбир. Не залипает. В конце немного сладчит.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">128.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/20.jpg" alt="Картинка 1">
+                    <div class="card-body" id="20">
+                        <h4 class="card-title">Глина Каолин Кыштымский</h4>
+                        <p class="card-text">
+                            Каолин высокого качества из экологически чистой природной зоны. Подходит для пищевого и косметического применения.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">370.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1>Натуральная косметика:</h1>
+            <div class="items">
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/21.jpg" alt="Картинка 1">
+                    <div class="card-body" id="21">
+                        <h4 class="card-title">Аромагель Ванильная мята</h4>
+                        <p class="card-text">
+                            На эфирных маслах, дарит увлажнение и мягкость. Без сульфатов.
+                            Бережно очищает тело, придает приятный запах ванили. Остается приятное ощущение чистоты на коже тела.
+                            Гель подходит для любых частей тела, в том числе для интимной гигиены.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">276.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/22.png" alt="Картинка 1">
+                    <div class="card-body" id="22">
+                        <h4 class="card-title">Аромагель “Восточная пряность”</h4>
+                        <p class="card-text">
+                            Дистиллированная вода, динатрия кокоамфоацетат, динатрия кокоил глутамат, кокамидопропилбетаин, коко глюкозид, экстракт календулы, экстракт облепихи,
+			                эфирное масло жасмина, эфирное масло корицы, эфирное масло ванили, эфирное масло гвоздики, эфирное масло пачули, цитрат натрия, дегидроацетат натрия, пропандиол, экстракт коры ивы.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">250.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/23.jpg" alt="Картинка 1">
+                    <div class="card-body" id="23">
+                        <h4 class="card-title">Балансирующая сыворотка Nutrition & Balance</h4>
+                        <p class="card-text">
+                            Усиленный комплекс активных компонентов легкой сыворотки Nutrition & Balance способствует максимально эффективному уходу за жирной кожей.
+                            Мгновенный заметный результат — гладкая, чистая, сияющая кожа без жирного блеска. Не обезвоживает и не пересушивает здоровые участки кожи,
+                            облегчает доступ кислорода к клеткам. сияющий ровный цвет лица нормализует деятельность сальных желез и сужает поры насыщает эпидермис витаминами и микроэлементами.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">250.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/24.png" alt="Картинка 1">
+                    <div class="card-body" id="24">
+                        <h4 class="card-title">Бальзам для губ “Брусника и мед”</h4>
+                        <p class="card-text">
+                            Натуральный бальзам для губ с медом и брусникой питает, защищает губы от сухости и шелушения. Абсолютно натуральный бальзам для губ великолепно защищает губы от сухости,
+			                шелушения и растрескивания из-за негативного влияния внешних факторов.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">184.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/25.jpg" alt="Картинка 1">
+                    <div class="card-body" id="25">
+                        <h4 class="card-title">Бальзам для губ “Облепиха и Апельсин”</h4>
+                        <p class="card-text">
+                            Абсолютно натуральный бальзам для губ великолепно защищает губы от сухости, шелушения и растрескивания из-за негативного влияния внешних факторов.
+			                Входящие в состав бальзама масла питают, увлажняют, тонизируют нежную кожу губ, способствуют заживлению трещин на губах.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">99.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/26.jpg" alt="Картинка 1">
+                    <div class="card-body" id="26">
+                        <h4 class="card-title">Бальзам укрепляющий для волосяных луковиц</h4>
+                        <p class="card-text">
+                            Активные компоненты, полученные из экологически чистых трав, составляют уникальную формулу бальзама. Они легко проникают в кожу головы, питая и укрепляя волосяные луковицы.
+			                Возобновляют рост волос на начальных этапах облысения. Препятствуют образованию перхоти. Останавливают выпадение волос и возвращают им здоровый блеск.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">215.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./ref/products/27.jpg" alt="Картинка 1">
+                    <div class="card-body" id="27">
+                        <h4 class="card-title">Бальзам-ополаскиватель Нежный лен “Блеск и сила”</h4>
+                        <p class="card-text">
+                            Бальзам для тонких и слабых волос укрепляет и корни и сам волос, придаёт волосам силу, облегчает укладку и расчёсывание.
+			                Активные компоненты экстракт солодки, экстракт репейника, экстракт крапивы, экстракт пивных дрожжей, протеины пшеницы, льняное масло, конопляное масло.
+                        </p>
+                        <div class="card-footer">
+                            <p>Цена:</p>
+                            <h4 name="price">254.00</h4>
+                            <h6>₽</h6>
+                            <a class="btn btn-primary" onclick="addToCart(parentElement.parentElement.id, parentElement.childNodes[3].textContent, parentElement.parentElement.childNodes[1].textContent, parentElement.parentElement.parentElement.childNodes[1].getAttribute('src'))">Добавить в корзину</a>
+                            <a class="btn btn-primary" onclick="deleteFromCart(parentElement.parentElement.id)">Удалить из корзины</a>                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="js/jquery-3.5.0.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</html>

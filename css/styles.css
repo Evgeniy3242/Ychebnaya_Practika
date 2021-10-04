@@ -1,0 +1,238 @@
+* {
+    transition: color .5s ease;
+    transition: background .5s ease;
+    font: var(--bs-font-sans-serif);
+}
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: var(--header_color);
+    min-height: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    transition: .3s ease;
+    z-index: 99;
+}
+.header-fix {
+    width: 100%;
+    background-color: var(--header_color_transition);
+}
+
+.header-fix:hover {
+    width: 100%;
+    background-color: var(--header_color_transition_hover);
+}
+
+.header .row {
+    display: block !important;
+}
+.header .logo {
+    color: var(--header_logo_color);
+}
+/*Навигация*/
+.nav {
+    flex-wrap: nowrap !important;
+}
+
+.nav a{
+    margin: 0 5px;
+}
+.nav [type=submit]{
+    border: 0px;
+    background: rgba(255,255,255,0);
+    color: var(--nav_links_color);
+    font-size: 20px;
+    align-self: center;
+    min-width: 115px;
+
+}
+.nav form{
+    margin:0;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+.nav-link {
+    color: var(--nav_links_color);
+    font-size: 20px;
+    align-self: center;
+    min-width: 115px;
+}
+.nav-link.active {
+    color: var(--nav_links_active_color);
+}
+
+.btn-secondary {
+    color: var(--nav_dropdown_menu_color) !important;
+    background-color: var(--nav_dropdown_menu) !important;
+    border-color: var(--nav_dropdown_menu_border) !important;
+}
+
+.logo {
+    margin: 0;
+    color: white;
+}
+/*Стиль темы.*/
+.dropdown {
+    align-self: center;
+    transition: .2s ease;
+}
+/*основной блок*/
+.main {
+    background-color: var(--main_block_color);
+    width: auto;
+    display: flex;
+    align-items: center;
+    height: 700px;
+}
+
+.main_title {
+    color: var(--main_title_color);
+}
+.main_title a{
+    text-decoration: none;
+    font-size: 30px;
+    margin: 50px;
+}
+
+/*прелоадер*/
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #e0e0e0;
+    z-index: 1001;
+}
+.preloader__row {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -35px;
+    text-align: center;
+    animation: preloader-rotate 2s infinite linear;
+}
+.preloader__item {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    background-color: #337ab7;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    animation: preloader-bounce 2s infinite ease-in-out;
+}
+.preloader__item:last-child {
+    top: auto;
+    bottom: 0;
+    animation-delay: -1s;
+}
+@keyframes preloader-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes preloader-bounce {
+    0%,
+    100% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+.loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+}
+.loaded .preloader {
+    display: none;
+}
+
+/*Товары*/
+.products{
+    padding-top: 70px;
+    background: var(--products_block_color);
+}
+
+.products h1 {
+    padding: 20px;
+}
+
+.items{
+    margin: 10px 0px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+}
+
+.card{
+    margin: 5px;
+    text-align: center;
+    max-width: 300px;
+    background: #e9ecff;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.card-footer h4, h6{
+    display: inline-flex;
+}
+.card-footer a{
+    display: flex;
+    font-size: x-small;
+}
+
+.card-footer:last-child {
+    background: transparent !important;
+}
+
+.card-footer:last-child a{
+    margin: 5px;
+}
+
+.card img{
+    margin: 5px;
+    width: 150px;
+	height: 200px;
+    align-self: center;
+}
+
+.card .card-text{
+    text-align: left;
+    font-size: 14px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.card .btn{
+    background: rgb(75, 84, 156) !important;
+    border-color: rgb(75, 84, 156) !important;
+}
+
+.modal-body img{
+    width: 50px;
+}
+.modal-body .modal-text{
+    padding-left: 20px;
+}
+
+
+/*Форма заказа*/
+.order-form{
+    margin: 5px 10px ;
+}
+.form-group{
+    margin: 5px;
+}
